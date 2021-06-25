@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Listener</title>
+  </head>
+  <body>
+    <button>CLICK</button>
+    <script>
+
+      class Counter {
+        count = 0;
+
+        // BOUND TO THE OBJECT
+        inc = () => {
+          this.count++;
+          console.log(this.count);
+        }
+      }
+
+      const counter = new Counter();
+      const button = document.querySelector('button');
+      // button.addEventListener('click', () => counter.inc() );
+      button.addEventListener('click', counter.inc);
+
+    </script>
+  </body>
+</html>
