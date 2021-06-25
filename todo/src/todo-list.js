@@ -1,11 +1,6 @@
 import TodoListItem from './todo-list-item';
 
-const TodoList = () => {
-  const items = [
-    { text: 'Learn React!', important: true, done: false, id: 'asdf' },
-    { text: 'Create App', important: true, done: false, id: '234234' },
-    { text: 'Drink coffee', important: false, done: true, id: 'dfnfd' },
-  ];
+const TodoList = ({ items }) => {
 
   const elements = items.map(({ text, important, done, id }) => (
     <li key={id}>
