@@ -2,18 +2,34 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const AppHeader = () => {
-  return <h1>Todo</h1>;
+  const isLoggedIn = false;
+
+  return (
+    <>
+      <h1>Todo</h1>
+      { isLoggedIn ? <span>logged in</span> : <span>Guest</span> }
+    </>
+  );
 }
 
 const SearchPanel = () => {
   return <input placeholder="search"/>;
 }
 
+const TodoListItem = ({ text }) => {
+  return <span>{text}</span>;
+}
+
 const TodoList = () => {
+  const items = [
+    'Learn React!',
+    'Create awesome app'
+  ];
+
   return (
-    <ul>
-      <li>Learn React</li>
-      <li>Create awesome app</li>
+    <ul className="important">
+      <li><TodoListItem text={items[0]} /></li>
+      <li><TodoListItem text={items[1]} /></li>
     </ul>
   );
 }
