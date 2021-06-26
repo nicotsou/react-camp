@@ -16,7 +16,7 @@ class App extends Component {
             {name: "Pinco", surname: "palino", numberOfSelection: 0},
             {name: "Pinco", surname: "palino", numberOfSelection: 0}
         ],
-        chosenIndex: undefined
+        chosenIndex : undefined
     }
 
     chooseNext = () => {
