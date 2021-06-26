@@ -13,11 +13,11 @@ class App extends Component {
 
   state = {
     items: [
-      {text: 'Learn React!', important: true, done: false, id: 'asdf'},
-      {text: 'Create App', important: true, done: false, id: '234234'},
-      {text: 'Drink coffee', important: false, done: true, id: 'dfnfd'}
+      this.createTodo('Learn React'),
+      this.createTodo('Create App'),
+      this.createTodo('Drink coffee')
     ],
-    filter: 'all',
+    filter: 'active',
     searchTerm: ''
   }
 
