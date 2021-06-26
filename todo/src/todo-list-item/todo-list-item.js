@@ -14,7 +14,9 @@ export default class TodoListItem extends Component {
     const { done, important } = this.state;
 
     const style = {
-      color: important ? 'tomato': '#333'
+      color: important ? 'steelblue': '#333',
+      fontWeight: important ? 'bold': null,
+      textDecoration: done ? 'line-through': null
     };
 
     const onClick = () => {
@@ -25,10 +27,20 @@ export default class TodoListItem extends Component {
       });
     };
 
+    const onMarkImportant = () => {
+      this.setState(({ important }) => ({ important: !important }));
+    };
+
     return (
-      <span style={style} onClick={onClick}>
-        { text }
-        { done && <span> [DONE]</span> }
+      <span>
+        <span style={style} onClick={onClick}>
+          { text }
+        </span>
+        <button
+          className="btn btn-outline-success btn-sm float-right"
+          onClick={onMarkImportant}>
+          important
+        </button>
       </span>
     );
   }
