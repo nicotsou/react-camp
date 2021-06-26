@@ -2,7 +2,7 @@ import './App.css';
 import ParticipantList from './participants-list/participants-list';
 import {Component} from "react";
 
-class App {//extends Component {
+class App extends Component {
     state = {
         participants: [
             {name: "Pinco", surname: "palino", numberOfSelection: 0},
