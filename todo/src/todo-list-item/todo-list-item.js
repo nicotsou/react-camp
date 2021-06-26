@@ -1,5 +1,5 @@
-import { Component } from 'react'
-import './todo-list-item.css'
+import { Component } from 'react';
+import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
 
@@ -32,15 +32,19 @@ export default class TodoListItem extends Component {
     };
 
     return (
-      <span>
-        <span style={style} onClick={onClick}>
+      <span className="todo-list-item">
+        <span
+          className="todo-list-item-label"
+          style={style}
+          onClick={onClick}>
           { text }
         </span>
         <button
-          className="btn btn-outline-success btn-sm float-right"
+          className="btn btn-outline-success btn-sm"
           onClick={onMarkImportant}>
-          important
+          <i className="fas fa-exclamation" />
         </button>
+
       </span>
     );
   }

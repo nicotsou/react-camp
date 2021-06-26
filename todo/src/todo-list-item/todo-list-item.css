@@ -1,0 +1,13 @@
+.todo-list-item {
+  font-size: 1.25rem;
+  display: flex;
+}
+
+.todo-list-item-label {
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.todo-list-item button {
+  width: 35px;
+}

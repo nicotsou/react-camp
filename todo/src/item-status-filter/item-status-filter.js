@@ -9,21 +9,23 @@ const ItemStatusFilter = ({ selected }) => {
   ];
 
   const buttonList = buttons.map(({ name, label }) => {
-    const style = {
-      color: name === selected ? 'tomato' : '#333'
-    };
+
+    const btnClass = name === selected ? "btn-info" : "btn-outline-secondary";
 
     return (
       <button
         key={name}
-        className="btn btn-outline-secondary"
-        style={style}>
+        className={`btn ${btnClass}`}>
         {label}
       </button>
     );
   })
 
-  return <div>{ buttonList }</div>;
+  return (
+    <div className="btn-group">
+      { buttonList }
+    </div>
+  );
 }
 
 export default ItemStatusFilter;
