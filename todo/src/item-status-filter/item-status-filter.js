@@ -10,7 +10,7 @@ const ItemStatusFilter = ({ selected }) => {
 
   const buttonList = buttons.map(({ name, label }) => {
 
-    const btnClass = name === selected ? "btn-info" : "btn-outline-secondary";
+    const btnClass = name === selected ? 'btn-info' : 'btn-outline-secondary';
 
     return (
       <button
