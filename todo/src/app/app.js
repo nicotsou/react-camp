@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
+
 import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
 import TodoList from '../todo-list';
@@ -24,7 +26,7 @@ class App extends Component {
       text,
       important: false,
       done: false,
-      id: 'asd'
+      id: nanoid(10)
     };
   }
 
