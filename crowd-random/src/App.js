@@ -31,6 +31,8 @@ class App extends Component {
 
   getRandomParticipantId = () => {
     const partipantsNotYetChosen = this.state.participants.filter(p => p.wasSelected === false);
+    //if (partipantsNotYetChosen.length===0) partipantsNotYetChosen =this.state.participants.pop();
+
     const index = Math.floor(Math.random() * partipantsNotYetChosen.length);
     return partipantsNotYetChosen[index].id;
   };
