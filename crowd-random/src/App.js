@@ -16,7 +16,7 @@ class App extends Component {
             {name: "Pinco", surname: "palino", numberOfSelection: 0},
             {name: "Pinco", surname: "palino", numberOfSelection: 0}
         ],
-        chosenIndex : undefined
+        chosenIndex: undefined
     }
 
     chooseNext = () => {
@@ -35,6 +35,13 @@ class App extends Component {
         return i;
     }
 
+    render() {
+        return (
+            <div className="App">
+                <ParticipantList participants={this.state.participants} chosenIndex={this.state.chosenIndex}/>
+            </div>
+        );
+    }
 }
 
 export default App;
