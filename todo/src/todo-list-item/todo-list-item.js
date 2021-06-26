@@ -1,3 +1,5 @@
+import './todo-list-item.css'
+
 const TodoListItem = ({ text, important, done }) => {
   const style = {
     color: important ? 'tomato': '#333'

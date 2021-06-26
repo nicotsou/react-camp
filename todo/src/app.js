@@ -4,6 +4,8 @@ import TodoList from './todo-list';
 import ItemAddForm from './item-add-form';
 import ItemStatusFilter from './item-status-filter';
 
+import './app.css';
+
 const App = () => {
   const items = [
     { text: 'Learn React!', important: true, done: false, id: 'asdf' },
@@ -12,7 +14,7 @@ const App = () => {
   ];
 
   return (
-    <div>
+    <div className="todo-app">
       <AppHeader />
       <ItemStatusFilter selected="done" />
       <SearchPanel />

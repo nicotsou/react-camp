@@ -11,9 +11,9 @@ const ItemStatusFilter = ({ selected }) => {
   const buttonList = buttons.map(({ name, label }) => {
     const style = {
       color: name === selected ? 'tomato' : '#333'
-    }
+    };
 
-    return <button style={style}>{label}</button>
+    return <button style={style}>{label}</button>;
   })
 
   return <div>{ buttonList }</div>;
