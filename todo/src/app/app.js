@@ -1,8 +1,8 @@
-import AppHeader from './app-header';
-import SearchPanel from './search-panel';
-import TodoList from './todo-list';
-import ItemAddForm from './item-add-form';
-import ItemStatusFilter from './item-status-filter';
+import AppHeader from '../app-header';
+import SearchPanel from '../search-panel';
+import TodoList from '../todo-list';
+import ItemAddForm from '../item-add-form';
+import ItemStatusFilter from '../item-status-filter';
 
 import './app.css';
 
@@ -16,8 +16,10 @@ const App = () => {
   return (
     <div className="todo-app">
       <AppHeader />
-      <ItemStatusFilter selected="done" />
-      <SearchPanel />
+      <div className="top-panel d-flex">
+        <SearchPanel />
+        <ItemStatusFilter selected="done" />
+      </div>
       <TodoList items={items} />
       <ItemAddForm />
     </div>

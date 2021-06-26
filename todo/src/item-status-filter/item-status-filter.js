@@ -1,5 +1,5 @@
+import './item-status-filter.css';
 
-// all, active, done
 const ItemStatusFilter = ({ selected }) => {
 
   const buttons = [
@@ -13,7 +13,11 @@ const ItemStatusFilter = ({ selected }) => {
       color: name === selected ? 'tomato' : '#333'
     };
 
-    return <button style={style}>{label}</button>;
+    return (
+      <button
+        className="btn btn-outline-secondary"
+        style={style}>{label}</button>
+    );
   })
 
   return <div>{ buttonList }</div>;

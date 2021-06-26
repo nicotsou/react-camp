@@ -1,9 +1,10 @@
-import TodoListItem from './todo-list-item';
+import TodoListItem from '../todo-list-item';
+import './todo-list.css';
 
 const TodoList = ({ items }) => {
 
   const elements = items.map(({ text, important, done, id }) => (
-    <li key={id}>
+    <li key={id} className="list-group-item">
       <TodoListItem
         text={text}
         important={important}
@@ -12,7 +13,7 @@ const TodoList = ({ items }) => {
   ));
 
   return (
-    <ul className="important">
+    <ul className="todo-list list-group">
       { elements }
     </ul>
   );
