@@ -1,10 +1,3 @@
-const ParticipantsPanel = () => {
-
-
-
-
-
-
-}
+const ParticipantsPanel = () => {};
 
 export default ParticipantsPanel;
