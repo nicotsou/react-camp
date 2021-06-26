@@ -2,6 +2,7 @@ import AppHeader from './app-header';
 import SearchPanel from './search-panel';
 import TodoList from './todo-list';
 import ItemAddForm from './item-add-form';
+import ItemStatusFilter from './item-status-filter';
 
 const App = () => {
   const items = [
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <div>
       <AppHeader />
+      <ItemStatusFilter selected="done" />
       <SearchPanel />
       <TodoList items={items} />
       <ItemAddForm />

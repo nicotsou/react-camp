@@ -28,3 +28,7 @@ const rover = new Unit(1, 100);
 // 2. Write a function that prints the list of all
 // functions in prototype chain  (only functions, not
 // other types of properties
+
+// Object.getPrototypeOf()
+// Object.getOwnPropertyNames()
+
