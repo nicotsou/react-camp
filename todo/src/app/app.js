@@ -17,9 +17,9 @@ class App extends Component {
       this.createTodo('Create App'),
       this.createTodo('Drink coffee')
     ],
-    filter: 'active',
+    filter: 'all',
     searchTerm: ''
-  }
+  };
 
   createTodo(text) {
     return {
@@ -37,6 +37,10 @@ class App extends Component {
     });
   };
 
+  onFilterChange = (filter) => {
+    this.setState({ filter });
+  }
+
   render() {
     const { items, filter } = this.state;
 
@@ -45,7 +49,9 @@ class App extends Component {
         <AppHeader/>
         <div className="top-panel d-flex">
           <SearchPanel/>
-          <ItemStatusFilter selected={filter} />
+          <ItemStatusFilter
+            onChange={this.onFilterChange}
+            selected={filter} />
         </div>
         <TodoList items={items}/>
         <ItemAddForm onAdd={this.onAdd}/>

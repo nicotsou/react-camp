@@ -1,6 +1,6 @@
 import './item-status-filter.css';
 
-const ItemStatusFilter = ({ selected }) => {
+const ItemStatusFilter = ({ selected, onChange }) => {
 
   const buttons = [
     { name: 'all', label: 'All' },
@@ -15,7 +15,8 @@ const ItemStatusFilter = ({ selected }) => {
     return (
       <button
         key={name}
-        className={`btn ${btnClass}`}>
+        className={`btn ${btnClass}`}
+        onClick={() => onChange(name)}>
         {label}
       </button>
     );
@@ -27,5 +28,9 @@ const ItemStatusFilter = ({ selected }) => {
     </div>
   );
 }
+
+ItemStatusFilter.defaultProps = {
+  onChange: () => {}
+};
 
 export default ItemStatusFilter;
