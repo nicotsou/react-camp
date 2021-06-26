@@ -1,12 +1,12 @@
 const ParticipantEntry = (props) => {
-    const {name, surname, isChosen, key} = props;
+    const {name, surname, isChosen} = props;
 
     const style = {
         color: isChosen ? 'red' : 'black'
     };
 
     return (
-        <span className="participant-entry" style={style} key={key}>
+        <span className="participant-entry" style={style} >
             {name} {surname}
         </span>
     )

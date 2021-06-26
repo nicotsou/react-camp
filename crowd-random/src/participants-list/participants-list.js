@@ -5,15 +5,19 @@ class ParticipantList extends Component {
 
     render() {
         let {participants, chosenIndex} = this.props;
-        return (
-            <> {
+        return (            
+            <ul>
+            {
                 participants.map((participant, index) => (
+                    <li key={participant.id}>
                         <ParticipantEntry name={participant.name} surname={participant.surname}
-                                          isChosen={chosenIndex === index} key={""}/>
+                                          isChosen={chosenIndex === index} />
+                    </li>
                     )
-                )
+                   
+                )            
             }
-            </>
+            </ul>
         )
     }
 }
