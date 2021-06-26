@@ -58,7 +58,7 @@ class App extends Component {
       return {
         items: newItems
       };
-    })
+    });
   };
 
   onToggleDone = (id) => {
