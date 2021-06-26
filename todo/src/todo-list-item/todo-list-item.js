@@ -1,15 +1,35 @@
+import { Component } from 'react'
 import './todo-list-item.css'
 
-const TodoListItem = ({ text, important, done }) => {
-  const style = {
-    color: important ? 'tomato': '#333'
+export default class TodoListItem extends Component {
+
+  state = {
+    done: false,
+    important: false
   };
 
-  return (
-    <span style={style}>
-      { text }
-    </span>
-  );
-}
+  render() {
 
-export default TodoListItem;
+    const { text } = this.props;
+    const { done, important } = this.state;
+
+    const style = {
+      color: important ? 'tomato': '#333'
+    };
+
+    const onClick = () => {
+      this.setState(({ done }) => {
+        return {
+          done: !done
+        }
+      });
+    };
+
+    return (
+      <span style={style} onClick={onClick}>
+        { text }
+        { done && <span> [DONE]</span> }
+      </span>
+    );
+  }
+}

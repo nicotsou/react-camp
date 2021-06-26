@@ -15,8 +15,11 @@ const ItemStatusFilter = ({ selected }) => {
 
     return (
       <button
+        key={name}
         className="btn btn-outline-secondary"
-        style={style}>{label}</button>
+        style={style}>
+        {label}
+      </button>
     );
   })
 
