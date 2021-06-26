@@ -4,10 +4,16 @@ import {Component} from "react";
 class ParticipantList extends Component {
 
     render() {
+        let {participants, chosenIndex} = this.props;
         return (
-        <>
-            <ParticipantEntry/>
-        </>
+            <> {
+                participants.map((participant, index) => (
+                        <ParticipantEntry name={participant.name} surname={participant.surname}
+                                          isChosen={chosenIndex === index} key={""}/>
+                    )
+                )
+            }
+            </>
         )
     }
 }
