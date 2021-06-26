@@ -39,7 +39,31 @@ class App extends Component {
 
   onFilterChange = (filter) => {
     this.setState({ filter });
-  }
+  };
+
+  onToggleImportant = (id) => {
+    // update an element without changing old object
+    this.setState(({ items }) => {
+      const newItems = items.map((el) => {
+        if (el.id !== id) {
+          return el;
+        }
+
+        return {
+          ...el,
+          important: !el.important
+        };
+      });
+
+      return {
+        items: newItems
+      };
+    })
+  };
+
+  onToggleDone = (id) => {
+    console.log('Done', id)
+  };
 
   render() {
     const { items, filter } = this.state;
@@ -53,7 +77,10 @@ class App extends Component {
             onChange={this.onFilterChange}
             selected={filter} />
         </div>
-        <TodoList items={items}/>
+        <TodoList
+          items={items}
+          onToggleImportant={this.onToggleImportant}
+          onToggleDone={this.onToggleDone} />
         <ItemAddForm onAdd={this.onAdd}/>
       </div>
     );
