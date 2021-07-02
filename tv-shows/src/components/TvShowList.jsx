@@ -1,9 +1,12 @@
+import { Card, Segment } from 'semantic-ui-react';
+
 const TvShowList = ({ children }) => {
   return (
-    <>
-      <h1>TV Shows</h1>
-      <ul style={{ listStyle: 'none' }}>{children}</ul>
-    </>
+    <Segment>
+      <Card.Group doubling itemsPerRow={4} style={{ listStyle: 'none' }}>
+        {children}
+      </Card.Group>
+    </Segment>
   );
 };
 

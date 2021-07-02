@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Divider, Header, Input } from 'semantic-ui-react';
 import { xor } from 'lodash';
 import popularShows from './popular-shows.json';
 import TvShowList from './components/TvShowList';
@@ -31,28 +32,31 @@ class App extends React.Component {
     const { favorites } = this.state;
 
     return (
-      <div>
-        <input
+      <Container style={{ paddingTop: '20px' }}>
+        <Header as="h1">TV Shows</Header>
+        <Input
           value={this.state.searchFieldValue}
           onChange={this.handleSearchFieldChange.bind(this)}
           placeholder="Search by name..."
         />
+        <Divider />
         <TvShowList>
           {this.filterShows(popularShows).map(
-            ({ id, name, vote_average, poster_path }) => (
+            ({ id, name, vote_average, poster_path, first_air_date }) => (
               <TvShowItem
                 key={id}
                 id={id}
                 name={name}
                 rating={vote_average}
                 posterSrc={poster_path}
-                favorites={favorites}
+                favorited={favorites.some((favoriteId) => favoriteId === id)}
+                releaseDate={first_air_date}
                 onClick={this.handleShowClick.bind(this, id)}
               />
             )
           )}
         </TvShowList>
-      </div>
+      </Container>
     );
   }
 }
