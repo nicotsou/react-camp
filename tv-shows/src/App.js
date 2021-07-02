@@ -1,15 +1,44 @@
 import React from 'react';
-import { Container, Divider, Header, Input } from 'semantic-ui-react';
+import {
+  Container,
+  Dimmer,
+  Divider,
+  Header,
+  Input,
+  Loader,
+  Message,
+} from 'semantic-ui-react';
 import { xor } from 'lodash';
-import popularShows from './popular-shows.json';
 import TvShowList from './components/TvShowList';
 import TvShowItem from './components/TvShowItem';
 
 class App extends React.Component {
   state = {
+    isLoaded: false,
+    error: null,
+    popularShows: null,
     searchFieldValue: '',
     favorites: [69050, 97513],
   };
+
+  componentDidMount() {
+    const params = new URLSearchParams({
+      api_key: process.env.REACT_APP_API_KEY,
+      language: 'en-US',
+      page: 1,
+    });
+
+    fetch(`https://api.themoviedb.org/3/tv/popular?${params}`)
+      .then((result) => result.json())
+      .then(
+        (result) => {
+          this.setState({ popularShows: result, isLoaded: true });
+        },
+        (error) => {
+          this.setState({ error, isLoaded: true });
+        }
+      );
+  }
 
   handleShowClick(id) {
     const favorites = xor(this.state.favorites, [id]);
@@ -20,16 +49,40 @@ class App extends React.Component {
     this.setState({ searchFieldValue: element.target.value });
   }
 
-  filterShows(popularShows) {
-    return popularShows.results.filter((show) =>
-      show.name
-        .toLowerCase()
-        .includes(this.state.searchFieldValue.toLowerCase())
+  filterShows() {
+    const { popularShows, searchFieldValue } = this.state;
+    const { results } = popularShows;
+
+    if (!results) {
+      return [];
+    }
+
+    return results.filter((show) =>
+      show.name.toLowerCase().includes(searchFieldValue.toLowerCase())
     );
   }
 
   render() {
-    const { favorites } = this.state;
+    const { favorites, isLoaded, error } = this.state;
+
+    if (!isLoaded) {
+      return (
+        <Dimmer active inverted>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      );
+    }
+
+    if (error) {
+      return (
+        <Message negative>
+          <Message.Header>
+            We're sorry we can't display the tv shows at the moment
+          </Message.Header>
+          <p>Please try to call the support</p>
+        </Message>
+      );
+    }
 
     return (
       <Container style={{ paddingTop: '20px' }}>
@@ -41,7 +94,7 @@ class App extends React.Component {
         />
         <Divider />
         <TvShowList>
-          {this.filterShows(popularShows).map(
+          {this.filterShows().map(
             ({ id, name, vote_average, poster_path, first_air_date }) => (
               <TvShowItem
                 key={id}
