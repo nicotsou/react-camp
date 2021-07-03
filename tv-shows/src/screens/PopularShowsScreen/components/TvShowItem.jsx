@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Button, Card, Icon, Image } from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
 
 const TvShowItem = ({
   id,
@@ -13,13 +14,15 @@ const TvShowItem = ({
   ...rest
 }) => {
   return (
-    <Card onClick={onClick} {...rest}>
-      <Image
-        wrapped
-        width={50}
-        src={`https://image.tmdb.org/t/p/w500/${posterSrc}`}
-        alt={name}
-      />{' '}
+    <Card  {...rest}>
+      <Link to={`/details/${id}`}>
+        <Image
+          wrapped
+          width={50}
+          src={`https://image.tmdb.org/t/p/w500/${posterSrc}`}
+          alt={name}
+        />
+      </Link>
       <Card.Content>
         <Card.Header>{name}</Card.Header>
         <Card.Meta>{releaseDate}</Card.Meta>
@@ -29,7 +32,7 @@ const TvShowItem = ({
         {rating}
       </Card.Content>
       <Card.Content>
-        <Button fluid color="green" basic={!favorited}>
+        <Button onClick={onClick} fluid color="green" basic={!favorited}>
           Add to favorites
         </Button>
       </Card.Content>
