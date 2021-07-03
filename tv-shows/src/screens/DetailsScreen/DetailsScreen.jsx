@@ -6,6 +6,7 @@ import { Icon, Label } from 'semantic-ui-react';
 
 const DetailsScreen = () => {
   const [details, setDetails] = useState({});
+  const [isLoaded, setIsLoaded] = useState(false);
   let { id } = useParams();
 
   useEffect(() => {
@@ -18,10 +19,18 @@ const DetailsScreen = () => {
       .then((data) => {
         const { genres, name, overview } = data;
         setDetails({ genres, name, overview });
+        setIsLoaded(true);
       })
       .catch((error) => console.error(error));
   }, [id, setDetails]);
 
+  if (isLoaded === false) {
+      return (
+          <div>
+              Loading...
+          </div>
+      )
+  }
   return (
     <div>
       <Breadcrumb>
