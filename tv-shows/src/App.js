@@ -1,6 +1,7 @@
 import { Route, HashRouter, Switch } from 'react-router-dom';
 import PopularShowsScreen from './screens/PopularShowsScreen/PopularShowsScreen';
 import FavoritesScreen from './screens/FavoritesScreen/FavoritesScreen';
+import DetailsScreen from './screens/DetailsScreen/DetailsScreen';
 
 const App = () => {
   return (
@@ -11,6 +12,9 @@ const App = () => {
         </Route>
         <Route path="/favorites">
           <FavoritesScreen />
+        </Route>
+        <Route path="/details/:id">
+          <DetailsScreen />
         </Route>
       </Switch>
     </HashRouter>
